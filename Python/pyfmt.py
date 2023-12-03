@@ -40,13 +40,15 @@ def check_and_diff(files: list[str]) -> int:
         with open(file, "rt", encoding="utf-8") as f:
             orig = f.read()
         fmt = format(orig)
-        diff = list(
-            difflib.unified_diff(orig.splitlines(),
-                                 fmt.splitlines(),
-                                 fromfile=file,
-                                 tofile=f"{file} (reformatted)",
-                                 lineterm=""))
-        if len(diff) > 0:
+        if diff := list(
+            difflib.unified_diff(
+                orig.splitlines(),
+                fmt.splitlines(),
+                fromfile=file,
+                tofile=f"{file} (reformatted)",
+                lineterm="",
+            )
+        ):
             diff_count += 1
             print("\n".join(diff), end="\n\n")
     return diff_count
