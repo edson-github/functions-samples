@@ -134,6 +134,4 @@ def sanitize_text(text: str) -> str:
 
     # Censor bad words
     swears = re.compile(r"shoot|dang|heck", re.IGNORECASE)
-    text = swears.sub(repl=lambda m: "*" * (m.end() - m.start()), string=text)
-
-    return text
+    return swears.sub(repl=lambda m: "*" * (m.end() - m.start()), string=text)

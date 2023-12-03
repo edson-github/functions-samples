@@ -62,7 +62,7 @@ def slackmoji(status: test_lab_fn.TestState | test_lab_fn.OutcomeSummary) -> str
         test_lab_fn.TestState.ERROR: ":red_circle:",
         test_lab_fn.TestState.INVALID: ":large_orange_diamond:"
     }
-    return status_slackmoji[status] if status in status_slackmoji else ""
+    return status_slackmoji.get(status, "")
 # [END getSlackmoji]
 
 

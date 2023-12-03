@@ -32,7 +32,7 @@ def post_message_to_discord(bot_name: str, message_body: str,
         bot_name: The bot username to display
         message_body: The message to post (Discord Markdown)
     """
-    if webhook_url == "":
+    if not webhook_url:
         raise EnvironmentError(
             "No webhook URL found. Set the Discord Webhook URL before deploying. "
             "Learn more about Discord webhooks here: "
